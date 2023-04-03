@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+--Dark-Text: hsl(229, 25%, 31%);
+--Score-Text: hsl(229, 64%, 46%);
+--Header-Outline: hsl(217, 16%, 45%);
+}
+
+.shadow{
+    box-shadow: 1px 5px 1px hsl(230, 89%, 62%);
+}
+
+.homebacground{
+     background: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+.scoreText{
+    color: var(--Score-Text);
+}
+.Darktext{
+   color: var(--Dark-Text);
+}
+.Border{
+    border-color:var(--Header-Outline) ;
+}
