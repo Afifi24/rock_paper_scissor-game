@@ -11,31 +11,59 @@ const App = () => {
            setRock(!rock)
            setPaper(false)
            setScissor(false)
-           console.log('this is rock')
-           console.log(rock)
 
       }
   const ChoseGamepaper = ()=>{
            setRock(false)
            setPaper(!paper)
            setScissor(false)
-           console.log('this is paper')
-           console.log(paper)
       }
   const ChoseGamescissor = ()=>{
            setRock(false)
            setPaper(false)
            setScissor(!scissor)
-           console.log('this is scissor')
 
+      }
+      // ! Here is the logic 
+      const options = ['rock','scissor','paper']
+      const [player,setPlayer] = useState()
+      const [Computer,setComputer] = useState()
+      const [result,setResult] = useState()
+      const [score,setScore] = useState(0)
+      const [winlose,setWinelose] = useState()
+    console.log(player)
+      const handlegame = (item)=>{
+        const randomIndex = Math.floor(Math.random()*options.length)
+        const computerChoice = options[randomIndex]
+        setPlayer(item)
+        setComputer(computerChoice)
+        setResult( getResult(item.title,computerChoice) )
+        
+      }
+      console.log(Computer,result)
+      const getResult =(player,Computer)=>{
+       if(player === Computer){
+        setWinelose('draw')
+          
+       }else if(
+        (player ==='rock' && Computer=='scissor') ||
+        (player === 'paper' && Computer === 'rock' ) ||
+        (player === 'scissor' && Computer === 'paper' ) 
+       ){
+          setWinelose('you win')
+          setScore(score + 1)
+       } else {
+          setScore(score - 1)
+          setWinelose('you lose')
+       }
       }
      
   return (
     <div className='min-h-screen homebacground'>
-      <Score/>
+      <Score score={score}/>
       <Routes>
-      <Route path='/' element={<Home ChoseGamescissor={ChoseGamescissor} ChoseGamepaper={ChoseGamepaper} ChoseGamerock={ChoseGamerock}/>}/>
-      <Route path='/chose' element={<Chosen rock={rock} scissor={scissor} paper={paper} />}/>
+      <Route path='/' element={<Home handlegame={handlegame} ChoseGamescissor={ChoseGamescissor} ChoseGamepaper={ChoseGamepaper} ChoseGamerock={ChoseGamerock}/>}/>
+      <Route path='/chose' element={<Chosen winlose={winlose}  Computer={Computer} player={player} />}/>
       </Routes>
       
 
