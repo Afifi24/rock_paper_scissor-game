@@ -44,7 +44,7 @@ const Home = ({handlegame}) => {
           
       </div>
       </div>
-        <div className='absolute md:z-20 left-1/2 -translate-x-1/2  bottom-10  md:left-[90%]'>
+        <div className='absolute md:z-20 left-1/2 -translate-x-1/2  bottom-8  md:left-[90%]'>
            <button onClick={()=>setIsopen(!isopen)} className='border uppercase text-sm rounded-md px-5  py-1 tracking-[3px] text-white'>Rules</button>
         </div>
         {
